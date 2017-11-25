@@ -12,5 +12,6 @@ namespace AulasOnline.Models
 
         public Materia Materia { get; set; }
 
+        public int MateriaId { get; set; }
     }
 }
