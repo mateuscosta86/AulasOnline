@@ -11,9 +11,10 @@ using System;
 namespace AulasOnline.Migrations
 {
     [DbContext(typeof(AulasOnlineDbContext))]
-    partial class AulasOnlineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171125151916_FixedAulaDomainModel")]
+    partial class FixedAulaDomainModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

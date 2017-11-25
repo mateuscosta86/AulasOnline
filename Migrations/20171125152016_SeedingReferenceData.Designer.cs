@@ -11,8 +11,8 @@ using System;
 namespace AulasOnline.Migrations
 {
     [DbContext(typeof(AulasOnlineDbContext))]
-    [Migration("20171124203933_SeedReferences")]
-    partial class SeedReferences
+    [Migration("20171125152016_SeedingReferenceData")]
+    partial class SeedingReferenceData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace AulasOnline.Migrations
 
                     b.Property<int>("Duracao");
 
-                    b.Property<int?>("MateriaId");
+                    b.Property<int>("MateriaId");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
@@ -59,7 +59,8 @@ namespace AulasOnline.Migrations
                 {
                     b.HasOne("AulasOnline.Models.Materia", "Materia")
                         .WithMany("Aulas")
-                        .HasForeignKey("MateriaId");
+                        .HasForeignKey("MateriaId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

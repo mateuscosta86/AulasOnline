@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AulasOnline.Migrations
 {
-    public partial class SeedReferences : Migration
+    public partial class SeedingReferenceData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,8 @@ namespace AulasOnline.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("DELETE FROM Materias WHERE Nome IN ('C#, 'Java', 'Python')");
+            migrationBuilder.Sql("DELETE FROM Aulas WHERE MateriaId IN (SELECT Id FROM Materias WHERE Nome IN ('C#', 'Java', 'Python'))");
+            migrationBuilder.Sql("DELETE FROM Materias WHERE Nome IN ('C#', 'Java', 'Python')");
 
         }
     }
