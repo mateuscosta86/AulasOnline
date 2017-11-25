@@ -1,21 +1,19 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace AulasOnline.Models
 {
-    public class Curso
+    public class Disciplina
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public DateTime DataCriacao { get; set; }
-        public decimal Preco { get; set; }
 
         public ICollection<Aula> Aulas { get; set; }
-
-        public Curso()
+    
+        public Disciplina()
         {
-            this.Aulas = new Collection<Aula>();
+            Aulas = new Collection<Aula>();
         }
+
     }
 }

@@ -6,5 +6,6 @@ namespace AulasOnline.Models.Resources
         public string Titulo { get; set; }
         public int Duracao { get; set; }
         public MateriaResource Materia { get; set; }
+        public DisciplinaResource Disciplina { get; set; }        
     }
 }

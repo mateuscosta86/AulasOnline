@@ -8,9 +8,10 @@ namespace AulasOnline.Mapping
     {
         public MappingProfile()
         {
+            CreateMap<Curso, CursoResource>();
             CreateMap<Aula, AulaResource>();
             CreateMap<Materia, MateriaResource>();
-
+            CreateMap<Disciplina, DisciplinaResource>();
         }
     }
 }

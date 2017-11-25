@@ -1,5 +1,3 @@
-
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AulasOnline.Models;
@@ -11,22 +9,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AulasOnline.Controllers
 {
-    public class AulasController : Controller
+    public class CursosController : Controller
     {
         private readonly AulasOnlineDbContext context;
         private readonly IMapper mapper;
-        public AulasController(AulasOnlineDbContext context, IMapper mapper)
+        public CursosController(AulasOnlineDbContext context, IMapper mapper)
         {
             this.mapper = mapper;
             this.context = context;
         }
 
-        [HttpGet("/api/aulas")]
-        public async Task<IEnumerable<AulaResource>> GetAulas()
+        [HttpGet("/api/cursos")]
+        public async Task<IEnumerable<CursoResource>> GetCursos()
         {
-            var aulas = await context.Aulas.Include(m => m.Materia).Include(m => m.Disciplina).ToListAsync();
+            var cursos = await context.Curso.Include(m => m.Aulas).ThenInclude(a => a.Materia).Include(m => m.Aulas).ThenInclude(a => a.Disciplina).ToListAsync();
             
-            return mapper.Map<List<Aula>, List<AulaResource>>(aulas);
+            return mapper.Map<List<Curso>, List<CursoResource>>(cursos);
         }
     }
 }

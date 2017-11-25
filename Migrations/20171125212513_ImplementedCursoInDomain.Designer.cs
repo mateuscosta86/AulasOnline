@@ -11,8 +11,8 @@ using System;
 namespace AulasOnline.Migrations
 {
     [DbContext(typeof(AulasOnlineDbContext))]
-    [Migration("20171125152016_SeedingReferenceData")]
-    partial class SeedingReferenceData
+    [Migration("20171125212513_ImplementedCursoInDomain")]
+    partial class ImplementedCursoInDomain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,10 @@ namespace AulasOnline.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CursoId");
+
+                    b.Property<int>("DisciplinaId");
+
                     b.Property<int>("Duracao");
 
                     b.Property<int>("MateriaId");
@@ -36,9 +40,41 @@ namespace AulasOnline.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CursoId");
+
+                    b.HasIndex("DisciplinaId");
+
                     b.HasIndex("MateriaId");
 
                     b.ToTable("Aulas");
+                });
+
+            modelBuilder.Entity("AulasOnline.Models.Curso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCriacao");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<decimal>("Preco");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Curso");
+                });
+
+            modelBuilder.Entity("AulasOnline.Models.Disciplina", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Disciplina");
                 });
 
             modelBuilder.Entity("AulasOnline.Models.Materia", b =>
@@ -57,6 +93,16 @@ namespace AulasOnline.Migrations
 
             modelBuilder.Entity("AulasOnline.Models.Aula", b =>
                 {
+                    b.HasOne("AulasOnline.Models.Curso", "Curso")
+                        .WithMany("Aulas")
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AulasOnline.Models.Disciplina", "Disciplina")
+                        .WithMany("Aulas")
+                        .HasForeignKey("DisciplinaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("AulasOnline.Models.Materia", "Materia")
                         .WithMany("Aulas")
                         .HasForeignKey("MateriaId")

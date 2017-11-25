@@ -2,20 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace AulasOnline.Models
+namespace AulasOnline.Models.Resources
 {
-    public class Curso
+    public class CursoResource
     {
         public int Id { get; set; }
         public string Nome { get; set; }
         public DateTime DataCriacao { get; set; }
         public decimal Preco { get; set; }
 
-        public ICollection<Aula> Aulas { get; set; }
+        public ICollection<AulaResource> Aulas { get; set; }
 
-        public Curso()
+        public CursoResource()
         {
-            this.Aulas = new Collection<Aula>();
+            this.Aulas = new Collection<AulaResource>();
         }
     }
 }

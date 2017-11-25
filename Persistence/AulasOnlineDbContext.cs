@@ -11,6 +11,8 @@ namespace AulasOnline.Persistence
         }
 
         public DbSet<Aula> Aulas { get; set; }
+        public DbSet<Curso> Curso { get; set; }
         public DbSet<Materia> Materias { get; set; }
+
     }
 }
