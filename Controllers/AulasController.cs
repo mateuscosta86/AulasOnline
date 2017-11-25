@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AulasOnline.Models;
@@ -24,6 +25,7 @@ namespace AulasOnline.Controllers
         public async Task<IEnumerable<AulaResource>> GetAulas()
         {
             var aulas = await context.Aulas.Include(m => m.Materia).ToListAsync();
+            
             return mapper.Map<List<Aula>, List<AulaResource>>(aulas);
         }
     }
