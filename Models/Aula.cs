@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace AulasOnline.Models
@@ -20,5 +22,9 @@ namespace AulasOnline.Models
 
         public Curso Curso { get; set; }
         public int CursoId { get; set; }
+
+        public Professor Professor { get; set; }
+        public int ProfessorId { get; set; }
+        
     }
 }

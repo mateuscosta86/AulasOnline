@@ -5,14 +5,22 @@ namespace AulasOnline.Persistence
 {
     public class AulasOnlineDbContext : DbContext
     {
+
+        public DbSet<Aula> Aulas { get; set; }
+        public DbSet<Curso> Curso { get; set; }
+        public DbSet<Materia> Materias { get; set; }
+        public DbSet<Aluno> Alunos { get; set; }
+
         public AulasOnlineDbContext(DbContextOptions<AulasOnlineDbContext> options)
         : base(options)
         {            
         }
 
-        public DbSet<Aula> Aulas { get; set; }
-        public DbSet<Curso> Curso { get; set; }
-        public DbSet<Materia> Materias { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            modelBuilder.Entity<Compra>().HasKey(c => new { c.AlunoId, c.CursoId });
+        }
+
+        
 
     }
 }
