@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AulasOnline.Models;
@@ -10,39 +9,39 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AulasOnline.Controllers
 {
-    [Route("/api/cursos")]
-    public class CursosController : Controller
+    [Route("/api/materias")]
+    public class MateriasController : Controller
     {
         private readonly AulasOnlineDbContext context;
         private readonly IMapper mapper;
-        public CursosController(AulasOnlineDbContext context, IMapper mapper)
+        public MateriasController(AulasOnlineDbContext context, IMapper mapper)
         {
             this.mapper = mapper;
             this.context = context;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CursoResource>> GetCursos()
+        public async Task<IEnumerable<MateriaResource>> GetMaterias()
         {
-            var cursos = await context.Cursos.Include(m => m.Aulas).ThenInclude(a => a.Materia).Include(m => m.Aulas).ThenInclude(a => a.Disciplina).ToListAsync();
+            var materias = await context.Materias.Include(m => m.Aulas).ToListAsync();
             
-            return mapper.Map<List<Curso>, List<CursoResource>>(cursos);
+            return mapper.Map<List<Materia>, List<MateriaResource>>(materias);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCurso([FromBody] CursoResource cursoResource) {
+        public async Task<IActionResult> CreateCurso([FromBody] SaveMateriaResource materiaResource) {
 
-            var curso = mapper.Map<CursoResource, Curso>(cursoResource);
-            curso.DataCriacao = DateTime.Now;
+            var materia = mapper.Map<SaveMateriaResource, Materia>(materiaResource);
+            
 
-            context.Cursos.Add(curso);
+            context.Materias.Add(materia);
             await context.SaveChangesAsync();
-
-            var result = mapper.Map<Curso, CursoResource>(curso);
+            
+            var result = mapper.Map<Materia, SaveMateriaResource>(materia);
 
             return Ok(result);
         }
-
+/*
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCurso(int id, [FromBody] CursoResource cursoResource) {
 
@@ -83,5 +82,6 @@ namespace AulasOnline.Controllers
 
             return Ok(result);
         }
-    }
+        */
+    }    
 }

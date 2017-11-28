@@ -1,0 +1,5 @@
+// cadastrando curso
+{
+	nome: 'Sistemas',
+    preco: '150'
+}

@@ -3,15 +3,15 @@ using System.Collections.ObjectModel;
 
 namespace AulasOnline.Models.Resources
 {
-    public class MateriaResource
+    public class SaveMateriaResource
     {
         public int Id { get; set; }        
         public string Nome { get; set; }
-        public ICollection<AulaResource> Aulas { get; set; }
+        public ICollection<int> Aulas { get; set; }
     
-        public MateriaResource()
+        public SaveMateriaResource()
         {
-            Aulas = new Collection<AulaResource>();
+            Aulas = new Collection<int>();
         }
     }
 }
