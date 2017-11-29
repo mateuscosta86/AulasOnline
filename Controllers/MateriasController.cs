@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AulasOnline.Models;
@@ -28,8 +29,20 @@ namespace AulasOnline.Controllers
             return mapper.Map<List<Materia>, List<MateriaResource>>(materias);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMateria(int id) {
+
+            var materia = await context.Materias.Include(c => c.Aulas).SingleOrDefaultAsync(c => c.Id == id);
+            if(materia == null)
+                return NotFound();
+
+            var result = mapper.Map<Materia, MateriaResource>(materia);
+
+            return Ok(result);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> CreateCurso([FromBody] SaveMateriaResource materiaResource) {
+        public async Task<IActionResult> CreateMateria([FromBody] SaveMateriaResource materiaResource) {
 
             var materia = mapper.Map<SaveMateriaResource, Materia>(materiaResource);
             
@@ -41,47 +54,35 @@ namespace AulasOnline.Controllers
 
             return Ok(result);
         }
-/*
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCurso(int id, [FromBody] CursoResource cursoResource) {
+        public async Task<IActionResult> UpdateMateria(int id, [FromBody] SaveMateriaResource materiaResource) {
 
-            var curso = await context.Cursos.FindAsync(id);
-            if(curso == null)
-                NotFound();
+            var materia = await context.Materias.FindAsync(id);
+            if(materia == null) {                
+                return NotFound();
+            }                
 
-            mapper.Map<CursoResource, Curso>(cursoResource, curso);
+            mapper.Map<SaveMateriaResource, Materia>(materiaResource, materia);
                         
             await context.SaveChangesAsync();
 
-            var result = mapper.Map<Curso, CursoResource>(curso);
+            var result = mapper.Map<Materia, MateriaResource>(materia);
 
             return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCurso(int id) {
+        public async Task<IActionResult> DeleteMateria(int id) {
 
-            var curso = await context.Cursos.FindAsync(id);
-            if(curso == null)
+            var materia = await context.Materias.FindAsync(id);
+            if(materia == null)
                 NotFound();
 
-            context.Remove(curso);
+            context.Remove(materia);
             await context.SaveChangesAsync();
 
             return Ok(id);
         }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetCurso(int id) {
-
-            var curso = await context.Cursos.Include(c => c.Aulas).SingleOrDefaultAsync(c => c.Id == id);
-            if(curso == null)
-                NotFound();
-
-            var result = mapper.Map<Curso, CursoResource>(curso);
-
-            return Ok(result);
-        }
-        */
     }    
 }

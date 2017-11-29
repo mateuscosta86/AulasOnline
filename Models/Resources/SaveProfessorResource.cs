@@ -3,9 +3,10 @@ using System.Collections.ObjectModel;
 
 namespace AulasOnline.Models.Resources
 {
-    public class SaveMateriaResource
+    public class SaveProfessorResource
     {
         public int Id { get; set; }        
         public string Nome { get; set; }
+        public string Sobrenome { get; set; }
     }
 }

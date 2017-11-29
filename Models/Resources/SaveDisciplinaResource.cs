@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace AulasOnline.Models.Resources
 {
-    public class SaveMateriaResource
+    public class SaveDisciplinaResource
     {
         public int Id { get; set; }        
         public string Nome { get; set; }
