@@ -65,9 +65,12 @@ namespace AulasOnline.Controllers
 
             mapper.Map<SaveProfessorResource, Professor>(professorResource, professor);
                         
-            await context.SaveChangesAsync();            
+            await context.SaveChangesAsync();
+
+            professor = await context.Professores.Include(p => p.Aulas).FirstOrDefaultAsync(p => p.Id == professor.Id);
 
             var result = mapper.Map<Professor, ProfessorResource>(professor);
+
 
             return Ok(result);
         }

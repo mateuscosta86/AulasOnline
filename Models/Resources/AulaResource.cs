@@ -5,8 +5,10 @@ namespace AulasOnline.Models.Resources
         public int Id { get; set; }
         public string Titulo { get; set; }
         public int Duracao { get; set; }
-        public MateriaResource Materia { get; set; }
-        public DisciplinaResource Disciplina { get; set; }    
-        public ProfessorResource Professor { get; set; }    
+        public KeyValuePairResource Materia { get; set; }
+        public KeyValuePairResource Disciplina { get; set; }    
+        public ProfessorKeyValuesResource Professor { get; set; }
+        public KeyValuePairResource Curso { get; set; }
+
     }
 }

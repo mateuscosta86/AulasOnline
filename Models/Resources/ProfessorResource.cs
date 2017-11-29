@@ -3,17 +3,13 @@ using System.Collections.ObjectModel;
 
 namespace AulasOnline.Models.Resources
 {
-    public class ProfessorResource
-    {
-        public int Id { get; set; }        
-        public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-
-        public ICollection<AulaResource> Aulas { get; set; }
+    public class ProfessorResource : ProfessorKeyValuesResource
+    {        
+        public ICollection<AulaKeyValuePairResource> Aulas { get; set; }
 
         public ProfessorResource()
         {
-            this.Aulas = new Collection<AulaResource>();
+            this.Aulas = new Collection<AulaKeyValuePairResource>();
         }
     }
 }

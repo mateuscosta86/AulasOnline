@@ -8,6 +8,7 @@ namespace AulasOnline.Models.Resources
         public int MateriaId { get; set; }
         public int DisciplinaId { get; set; }
         public int ProfessorId { get; set; }   
+        public int CursoId { get; set; }
     }
 }
 

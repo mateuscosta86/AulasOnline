@@ -65,7 +65,11 @@ namespace AulasOnline.Controllers
 
             mapper.Map<SaveDisciplinaResource, Disciplina>(disciplinaResource, disciplina);
                         
-            await context.SaveChangesAsync();            
+            await context.SaveChangesAsync();    
+
+            disciplina = await context.Disciplinas
+            .Include(d => d.Aulas)
+            .FirstOrDefaultAsync(d => d.Id == disciplina.Id);        
 
             var result = mapper.Map<Disciplina, DisciplinaResource>(disciplina);
 

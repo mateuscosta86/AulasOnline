@@ -24,15 +24,23 @@ namespace AulasOnline.Controllers
         [HttpGet]
         public async Task<IEnumerable<CursoResource>> GetCursos()
         {
-            var cursos = await context.Cursos.Include(m => m.Aulas).ThenInclude(a => a.Materia).Include(m => m.Aulas).ThenInclude(a => a.Disciplina).ToListAsync();
+            var cursos = await context.Cursos
+            .Include(m => m.Aulas)
+            .ThenInclude(a => a.Materia)
+            .Include(m => m.Aulas)
+            .ThenInclude(a => a.Disciplina)
+            .Include(m => m.Aulas)
+            .ThenInclude(a => a.Professor)
+            .ToListAsync();
             
             return mapper.Map<List<Curso>, List<CursoResource>>(cursos);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCurso([FromBody] CursoResource cursoResource) {
+        public async Task<IActionResult> CreateCurso([FromBody] SaveCursoResource cursoResource) {
 
-            var curso = mapper.Map<CursoResource, Curso>(cursoResource);
+            var curso = mapper.Map<SaveCursoResource, Curso>(cursoResource);
+            
             curso.DataCriacao = DateTime.Now;
 
             context.Cursos.Add(curso);
@@ -44,13 +52,16 @@ namespace AulasOnline.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCurso(int id, [FromBody] CursoResource cursoResource) {
+        public async Task<IActionResult> UpdateCurso(int id, [FromBody] SaveCursoResource cursoResource) {
 
-            var curso = await context.Cursos.FindAsync(id);
+            var curso = await context.Cursos
+            .Include(c => c.Aulas)
+            .FirstOrDefaultAsync(c => c.Id == cursoResource.Id);
+
             if(curso == null)
                 NotFound();
 
-            mapper.Map<CursoResource, Curso>(cursoResource, curso);
+            mapper.Map<SaveCursoResource, Curso>(cursoResource, curso);
                         
             await context.SaveChangesAsync();
 
