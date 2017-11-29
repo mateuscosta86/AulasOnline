@@ -14,8 +14,13 @@ namespace AulasOnline.Mapping
             // Domain to API Resource
             CreateMap<Aula, AulaResource>();
 
-            CreateMap<Aluno, AlunoResource>()
-            .ForMember(ar => ar.Compras, opt => opt.MapFrom( a => a.Compras.Select( c => new KeyValuePairResource { Id = c.Curso.Id, Nome = c.Curso.Nome } )));
+            CreateMap<Aluno, AlunoResource>();
+
+            CreateMap<Compra, CompraResource>();
+            CreateMap<Compra, KeyPairCompraResouce>()
+            .ForMember(kp => kp.CursoId, opt => opt.MapFrom(c => c.CursoId))
+            .ForMember(kp => kp.CursoNome, opt => opt.MapFrom(c => c.Curso.Nome));
+                    
 
             CreateMap<Curso, CursoResource>();            
             CreateMap<Materia, MateriaResource>();
@@ -27,6 +32,7 @@ namespace AulasOnline.Mapping
             CreateMap<Disciplina, KeyValuePairResource>();            
             CreateMap<Aula, AulaKeyValuePairResource>();
             CreateMap<Professor, ProfessorKeyValuesResource>();            
+            CreateMap<Aluno, ProfessorKeyValuesResource>();            
 
 
             // API Resource to Domain            
@@ -53,6 +59,8 @@ namespace AulasOnline.Mapping
 
             CreateMap<SaveAlunoResource, Aluno>()            
             .ForMember(a => a.Id, opt => opt.Ignore());
+
+            CreateMap<SaveCompraResource, Compra>();
         }
     }
 }

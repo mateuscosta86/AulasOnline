@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AulasOnline.Models;
 using AulasOnline.Models.Resources;
@@ -24,8 +26,14 @@ namespace AulasOnline.Controllers
         public async Task<IEnumerable<AlunoResource>> GetAlunos()
         {
             var alunos = await context.Alunos
-            .Include(a => a.Compras)
+            .Include(a => a.Compras).ThenInclude(a => a.Aluno)
+            .Include(a => a.Compras).ThenInclude(c => c.Curso)
             .ToListAsync();
+
+            foreach(var aluno in alunos) {
+                foreach (var compra in aluno.Compras)
+                    Console.WriteLine(compra.Aluno);
+            }
             
             return mapper.Map<List<Aluno>, List<AlunoResource>>(alunos);
         }
@@ -34,7 +42,8 @@ namespace AulasOnline.Controllers
         public async Task<IActionResult> GetAluno(int id) {
 
             var aluno = await context.Alunos
-            .Include(a => a.Compras)
+            .Include(a => a.Compras).ThenInclude(a => a.Aluno)
+            .Include(a => a.Compras).ThenInclude(c => c.Curso)
             .SingleOrDefaultAsync(a => a.Id == id);
 
             if(aluno == null)

@@ -52,7 +52,7 @@ namespace AulasOnline
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}/{idd?}");
 
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",

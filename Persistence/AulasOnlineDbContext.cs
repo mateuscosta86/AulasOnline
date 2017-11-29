@@ -12,6 +12,7 @@ namespace AulasOnline.Persistence
         public DbSet<Aluno> Alunos { get; set; }
         public DbSet<Disciplina> Disciplinas { get; set; }
         public DbSet<Professor> Professores { get; set; }
+        public DbSet<Compra> Compras { get; set; }
 
         public AulasOnlineDbContext(DbContextOptions<AulasOnlineDbContext> options)
         : base(options)
