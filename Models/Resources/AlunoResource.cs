@@ -11,11 +11,11 @@ namespace AulasOnline.Models.Resources
         public string Cpf { get; set; }
         public bool Anual { get; set; }
 
-        public ICollection<CursoResource> Compras { get; set; }
+        public ICollection<KeyValuePairResource> Compras { get; set; }
 
         public AlunoResource()
         {
-            this.Compras = new Collection<CursoResource>();
+            this.Compras = new Collection<KeyValuePairResource>();
         }
     }
 }
