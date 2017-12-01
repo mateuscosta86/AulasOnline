@@ -13,6 +13,11 @@ export class CursoService {
       .map(res => res.json());
   }
 
+  getCurso(id: number) {
+    return this.http.get('/api/cursos/' + id)
+    .map(res => res.json());
+  }
+
   createCurso(saveCurso: SaveCurso) {
     return this.http.post('/api/cursos', saveCurso)
       .map( res => res.json());

@@ -12,7 +12,7 @@ export class CursoFormComponent implements OnInit {
   saveCurso: SaveCurso = { nome: "", preco: 0};
   constructor(private cursoService: CursoService) {
     
-    console.log("Curso: ", this.saveCurso);
+    // console.log("Curso: ", this.saveCurso);
     
   }
 
@@ -24,18 +24,18 @@ export class CursoFormComponent implements OnInit {
     this.cursoService.getCursos()
     .subscribe(cursos => { 
       this.cursos = cursos;
-      console.log("cursos: ", this.cursos);
+      // console.log("cursos: ", this.cursos);
     });
   }
 
   OnMakeChange() {
-    console.log("Curso: ", this.saveCurso);
+    // console.log("Curso: ", this.saveCurso);
   }
 
   submit() {
     this.cursoService.createCurso(this.saveCurso)
       .subscribe(x => {
-        console.log("Criado!");
+        // console.log("Criado!");
         this.LoadCursos();
       });
   }
@@ -44,7 +44,7 @@ export class CursoFormComponent implements OnInit {
     if(confirm("Tem certeza?"))
     this.cursoService.apagar(id)
       .subscribe(x => {
-        console.log("Deletado: ", id );
+        // console.log("Deletado: ", id );
         this.LoadCursos();
       });
 
