@@ -1,0 +1,18 @@
+<h1>Criar Novo Curso</h1>
+
+<form (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="nome">Nome do curso</label>
+    <input type="text" class="form-control" id="nome" placeholder="Insira o nome do curso" (change)="OnMakeChange()"  [(ngModel)]="saveCurso.nome" name="nome">
+  </div>
+  <div class="form-group">
+    <label for="preco">Preço</label>
+    <input type="text" class="form-control" id="preco" placeholder="Insira o preço do curso" (change)="OnMakeChange()"  [(ngModel)]="saveCurso.preco" name="preco">
+  </div>  
+  <button type="submit" class="btn btn-primary">Criar</button>
+</form>
+
+<h2>Cursos Existentes</h2>
+<ul class="list-group">
+  <li *ngFor="let c of cursos" class="list-group-item" value="{{ c.id }}">{{ c.nome }}<button class="btn btn-primary">Editar</button><button type="button" (click)="delete(c.id)" class="btn btn-danger">Apagar</button></li>  
+</ul>
