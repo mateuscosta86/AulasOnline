@@ -16,6 +16,7 @@ import { CursoAlterComponent } from './components/curso-alter/curso-alter.compon
 import { ProfessorListComponent } from './components/professor-list/professor-list.component';
 import { ProfessorService } from './services/professor.service';
 import { ProfessorAlterComponent } from './components/professor-alter/professor-alter.component';
+import { ProfessorFormComponent } from './components/professor-form/professor-form.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { ProfessorAlterComponent } from './components/professor-alter/professor-
         CursoListComponent,
         CursoAlterComponent,
         ProfessorListComponent,
-        ProfessorAlterComponent
+        ProfessorAlterComponent,
+        ProfessorFormComponent
     ],
     imports: [
         CommonModule,
@@ -41,6 +43,7 @@ import { ProfessorAlterComponent } from './components/professor-alter/professor-
             { path: 'cursos/listar', component: CursoListComponent },
             { path: 'cursos/alterar', component: CursoAlterComponent },
             { path: 'cursos/alterar/:id', component: CursoAlterComponent },
+            { path: 'professores/novo', component: ProfessorFormComponent },
             { path: 'professores/listar', component: ProfessorListComponent },
             { path: 'professores/alterar', component: ProfessorAlterComponent },
             { path: 'professores/alterar/:id', component: CursoAlterComponent },

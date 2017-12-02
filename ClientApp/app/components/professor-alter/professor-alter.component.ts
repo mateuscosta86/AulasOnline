@@ -13,7 +13,7 @@ export class ProfessorAlterComponent implements OnInit {
   professores: any[];  
   professor: any;
   id: number;
-  saveProfessor: SaveProfessor = { id: 0, nome: "", sobreNome: "" };
+  saveProfessor: SaveProfessor = { id: 0, nome: "", sobrenome: "" };
   sub: any;
 
   constructor(private professorService: ProfessorService, private route: ActivatedRoute) {
@@ -28,12 +28,12 @@ export class ProfessorAlterComponent implements OnInit {
       .subscribe(Prof => {
         this.professor = Prof;
         this.saveProfessor.nome = this.professor.nome;
-        this.saveProfessor.sobreNome = this.professor.sobreNome;
+        this.saveProfessor.sobrenome = this.professor.sobrenome;
       });
     }      
     else {
       this.saveProfessor.nome = "";
-      this.saveProfessor.sobreNome = "";
+      this.saveProfessor.sobrenome = "";
     }
     
     this.professorService.getProfessores()
@@ -53,7 +53,7 @@ export class ProfessorAlterComponent implements OnInit {
       .subscribe(prof => {
         this.professor = prof;
         this.saveProfessor.nome = this.professor.nome;
-        this.saveProfessor.sobreNome = this.professor.sobreNome;
+        this.saveProfessor.sobrenome = this.professor.sobrenome;
       });
     
     let buttons: HTMLCollection = event.srcElement.parentElement.children;
@@ -75,7 +75,7 @@ export class ProfessorAlterComponent implements OnInit {
       .subscribe(x => this.reloadProfessores());
       
     this.saveProfessor.nome = "";
-    this.saveProfessor.sobreNome  = "";
+    this.saveProfessor.sobrenome  = "";
 
   }
 

@@ -1,0 +1,18 @@
+<h1>Cadastrar Novo Professor</h1>
+
+<form (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="nome">Nome do professor</label>
+    <input type="text" class="form-control" id="nome" placeholder="Insira o nome do professor" (change)="OnMakeChange()"  [(ngModel)]="saveProfessor.nome" name="nome">
+  </div>
+  <div class="form-group">
+    <label for="sobrenome">Sobrenome do professor</label>
+    <input type="text" class="form-control" id="sobrenome" placeholder="Insira o sobrenome do professor" (change)="OnMakeChange()"  [(ngModel)]="saveProfessor.sobrenome" name="sobrenome">
+  </div>  
+  <button type="submit" class="btn btn-primary">Criar</button>
+</form>
+
+<h2>Cursos Existentes</h2>
+<ul class="list-group">
+  <li *ngFor="let p of professores" class="list-group-item" value="{{ p.id }}">{{ p.nome }} {{ p.sobrenome }}<a class="btn btn-primary" href="#" role="button" [routerLink]="['/professores/alterar', p.id]">Editar</a><button type="button" (click)="delete(p.id)" class="btn btn-danger">Apagar</button></li>  
+</ul>
