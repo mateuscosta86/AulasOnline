@@ -77,5 +77,4 @@ export class MateriaAlterComponent implements OnInit {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-
 }

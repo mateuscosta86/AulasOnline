@@ -12,7 +12,7 @@
   <button type="submit" class="btn btn-primary">Criar</button>
 </form>
 
-<h2>Cursos Existentes</h2>
+<h2>Professores Cadastrados</h2>
 <ul class="list-group">
   <li *ngFor="let p of professores" class="list-group-item" value="{{ p.id }}">{{ p.nome }} {{ p.sobrenome }}<a class="btn btn-primary" href="#" role="button" [routerLink]="['/professores/alterar', p.id]">Editar</a><button type="button" (click)="delete(p.id)" class="btn btn-danger">Apagar</button></li>  
 </ul>

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h2>Disciplinas Existentes</h2>
+        <div class="list-group">
+          <button *ngFor="let d of disciplinas" id="{{ d.id }}" type="button" class="list-group-item list-group-item-action" (click)="onClickForDetails($event)">{{ d.nome }}</button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div>
+          <h3>Detalhes da Disciplina</h3>
+          <p>Id: {{disciplina.id}}</p>
+          <p>Nome: {{disciplina.nome}}</p>          
+          <h4>Aulas: </h4>
+          <p *ngFor="let aula of disciplina.aulas" >Id: {{aula.id}} - Nome: {{aula.titulo}}</p>  
+        </div>
+      </div>
+    </div>
+  </div>

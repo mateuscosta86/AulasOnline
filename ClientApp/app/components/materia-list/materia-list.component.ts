@@ -33,5 +33,4 @@ export class MateriaListComponent implements OnInit {
 
     event.toElement.classList.add("active");
   }
-
 }

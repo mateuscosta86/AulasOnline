@@ -62,6 +62,21 @@
                         <span class='glyphicon glyphicon-cog'></span> Editar Materias
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/disciplinas/listar']">
+                        <span class='glyphicon glyphicon-th-list'></span> Disciplinas
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/disciplinas/novo']">
+                        <span class='glyphicon glyphicon-plus'></span> Nova Disciplina
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/disciplinas/alterar']">
+                        <span class='glyphicon glyphicon-cog'></span> Editar Disciplinas
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

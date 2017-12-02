@@ -1,4 +1,3 @@
-import { MateriaService } from './services/materia.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +10,23 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { CursoFormComponent } from './components/curso-form/curso-form.component';
-import { CursoService } from './services/curso.service';
 import { CursoListComponent } from './components/curso-list/curso-list.component';
 import { CursoAlterComponent } from './components/curso-alter/curso-alter.component';
 import { ProfessorListComponent } from './components/professor-list/professor-list.component';
-import { ProfessorService } from './services/professor.service';
 import { ProfessorAlterComponent } from './components/professor-alter/professor-alter.component';
 import { ProfessorFormComponent } from './components/professor-form/professor-form.component';
 import { MateriaFormComponent } from './components/materia-form/materia-form.component';
 import { MateriaListComponent } from './components/materia-list/materia-list.component';
 import { MateriaAlterComponent } from './components/materia-alter/materia-alter.component';
+import { DisciplinaFormComponent } from './components/disciplina-form/disciplina-form.component';
+
+import { DisciplinaService } from './services/disciplina.service';
+import { MateriaService } from './services/materia.service';
+import { ProfessorService } from './services/professor.service';
+import { CursoService } from './services/curso.service';
+import { DisciplinaAlterComponent } from './components/disciplina-alter/disciplina-alter.component';
+import { DisciplinaListComponent } from './components/disciplina-list/disciplina-list.component';
+
 
 @NgModule({
     declarations: [
@@ -37,7 +43,10 @@ import { MateriaAlterComponent } from './components/materia-alter/materia-alter.
         ProfessorFormComponent,
         MateriaFormComponent,
         MateriaListComponent,
-        MateriaAlterComponent
+        MateriaAlterComponent,
+        DisciplinaFormComponent,
+        DisciplinaAlterComponent,
+        DisciplinaListComponent
     ],
     imports: [
         CommonModule,
@@ -58,6 +67,10 @@ import { MateriaAlterComponent } from './components/materia-alter/materia-alter.
             { path: 'materias/listar', component: MateriaListComponent },
             { path: 'materias/alterar', component: MateriaAlterComponent },
             { path: 'materias/alterar/:id', component: MateriaAlterComponent },
+            { path: 'disciplinas/novo', component: DisciplinaFormComponent },
+            { path: 'disciplinas/listar', component: DisciplinaListComponent },
+            { path: 'disciplinas/alterar', component: DisciplinaAlterComponent },
+            { path: 'disciplinas/alterar/:id', component: DisciplinaAlterComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
@@ -66,7 +79,8 @@ import { MateriaAlterComponent } from './components/materia-alter/materia-alter.
     providers: [
         CursoService,
         ProfessorService,
-        MateriaService
+        MateriaService,
+        DisciplinaService
     ]
 })
 export class AppModuleShared {

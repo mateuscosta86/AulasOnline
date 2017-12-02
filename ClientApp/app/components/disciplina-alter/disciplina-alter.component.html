@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h2>Disciplinas Existentes</h2>
+        <div class="list-group">
+          <button *ngFor="let d of disciplinas" id="{{ d.id }}" type="button" class="list-group-item list-group-item-action" (click)="onClickForAlter($event)">{{ d.nome }}</button>
+        </div>
+      </div>
+      <div class="col-6">
+          <form (ngSubmit)="submit($event)">
+              <div class="form-group">
+                <label for="nome">Nome da disciplina</label>
+                <input type="text" class="form-control" id="nome" placeholder="Insira o nome da disciplina" (change)="onMakeChange()"  [(ngModel)]="saveDisciplina.nome" name="nome">
+              </div>
+              <button type="submit" class="btn btn-primary">Alterar</button>
+            </form>
+      </div>
+    </div>
+  </div>
