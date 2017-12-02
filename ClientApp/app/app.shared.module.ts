@@ -1,3 +1,4 @@
+import { MateriaService } from './services/materia.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,9 @@ import { ProfessorListComponent } from './components/professor-list/professor-li
 import { ProfessorService } from './services/professor.service';
 import { ProfessorAlterComponent } from './components/professor-alter/professor-alter.component';
 import { ProfessorFormComponent } from './components/professor-form/professor-form.component';
+import { MateriaFormComponent } from './components/materia-form/materia-form.component';
+import { MateriaListComponent } from './components/materia-list/materia-list.component';
+import { MateriaAlterComponent } from './components/materia-alter/materia-alter.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +34,10 @@ import { ProfessorFormComponent } from './components/professor-form/professor-fo
         CursoAlterComponent,
         ProfessorListComponent,
         ProfessorAlterComponent,
-        ProfessorFormComponent
+        ProfessorFormComponent,
+        MateriaFormComponent,
+        MateriaListComponent,
+        MateriaAlterComponent
     ],
     imports: [
         CommonModule,
@@ -46,7 +53,11 @@ import { ProfessorFormComponent } from './components/professor-form/professor-fo
             { path: 'professores/novo', component: ProfessorFormComponent },
             { path: 'professores/listar', component: ProfessorListComponent },
             { path: 'professores/alterar', component: ProfessorAlterComponent },
-            { path: 'professores/alterar/:id', component: CursoAlterComponent },
+            { path: 'professores/alterar/:id', component: ProfessorAlterComponent },
+            { path: 'materias/novo', component: MateriaFormComponent },
+            { path: 'materias/listar', component: MateriaListComponent },
+            { path: 'materias/alterar', component: MateriaAlterComponent },
+            { path: 'materias/alterar/:id', component: MateriaAlterComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
@@ -54,7 +65,8 @@ import { ProfessorFormComponent } from './components/professor-form/professor-fo
     ],
     providers: [
         CursoService,
-        ProfessorService
+        ProfessorService,
+        MateriaService
     ]
 })
 export class AppModuleShared {

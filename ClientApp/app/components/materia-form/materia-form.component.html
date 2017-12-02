@@ -1,0 +1,14 @@
+<h1>Criar Nova Materia</h1>
+
+<form (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="nome">Nome do curso</label>
+    <input type="text" class="form-control" id="nome" placeholder="Insira o nome da materia" (change)="OnMakeChange()"  [(ngModel)]="saveMateria.nome" name="nome">
+  </div>
+  <button type="submit" class="btn btn-primary">Criar</button>
+</form>
+
+<h2>Materias Existentes</h2>
+<ul class="list-group">
+  <li *ngFor="let m of materias" class="list-group-item" value="{{ m.id }}">{{ m.nome }}<a class="btn btn-primary" href="#" role="button" [routerLink]="['/materias/alterar', m.id]">Editar</a><button type="button" (click)="delete(m.id)" class="btn btn-danger">Apagar</button></li>  
+</ul>

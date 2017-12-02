@@ -47,6 +47,21 @@
                         <span class='glyphicon glyphicon-cog'></span> Editar Professores
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/materias/listar']">
+                        <span class='glyphicon glyphicon-th-list'></span> Materias
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/materias/novo']">
+                        <span class='glyphicon glyphicon-plus'></span> Nova Materia
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/materias/alterar']">
+                        <span class='glyphicon glyphicon-cog'></span> Editar Materias
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
