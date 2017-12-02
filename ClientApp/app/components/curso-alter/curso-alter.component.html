@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h2>Cursos Existentes</h2>
+        <div class="list-group">
+          <button *ngFor="let c of cursos" id="{{ c.id }}" type="button" class="list-group-item list-group-item-action" (click)="onClickForAlter($event)">{{ c.nome }}</button>
+        </div>
+      </div>
+      <div class="col-6">
+          <form (ngSubmit)="submit($event)">
+              <div class="form-group">
+                <label for="nome">Nome do curso</label>
+                <input type="text" class="form-control" id="nome" placeholder="Insira o nome do curso" (change)="onMakeChange()"  [(ngModel)]="saveCurso.nome" name="nome">
+              </div>
+              <div class="form-group">
+                <label for="preco">Preço</label>
+                <input type="text" class="form-control" id="preco" placeholder="Insira o preço do curso" (change)="onMakeChange()"  [(ngModel)]="saveCurso.preco" name="preco">
+              </div>  
+              <button type="submit" class="btn btn-primary">Alterar</button>
+            </form>
+      </div>
+    </div>
+  </div>

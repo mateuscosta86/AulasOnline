@@ -27,4 +27,9 @@ export class CursoService {
     return this.http.delete('/api/cursos/' + id)
       .map(res => res.json());
   }
+
+  alterar(id: number, saveCurso: SaveCurso) {
+    return this.http.put('/api/cursos/' + id, saveCurso)
+    .map(res => res.json());
+  }
 }

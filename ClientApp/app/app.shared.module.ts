@@ -12,6 +12,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { CursoFormComponent } from './components/curso-form/curso-form.component';
 import { CursoService } from './services/curso.service';
 import { CursoListComponent } from './components/curso-list/curso-list.component';
+import { CursoAlterComponent } from './components/curso-alter/curso-alter.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CursoListComponent } from './components/curso-list/curso-list.component
         FetchDataComponent,
         HomeComponent,
         CursoFormComponent,
-        CursoListComponent
+        CursoListComponent,
+        CursoAlterComponent
     ],
     imports: [
         CommonModule,
@@ -31,8 +33,10 @@ import { CursoListComponent } from './components/curso-list/curso-list.component
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },            
             { path: 'home', component: HomeComponent },
-            { path: 'cursos/listar', component: CursoListComponent },
             { path: 'cursos/novo', component: CursoFormComponent },
+            { path: 'cursos/listar', component: CursoListComponent },
+            { path: 'cursos/alterar', component: CursoAlterComponent },
+            { path: 'cursos/alterar/:id', component: CursoAlterComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }

@@ -9,7 +9,7 @@ import { SaveCurso } from '../../models/savecurso';
 })
 export class CursoFormComponent implements OnInit {
   cursos: any[];
-  saveCurso: SaveCurso = { nome: "", preco: 0};
+  saveCurso: SaveCurso = { id: 0, nome: "", preco: 0};
   constructor(private cursoService: CursoService) {
     
     // console.log("Curso: ", this.saveCurso);

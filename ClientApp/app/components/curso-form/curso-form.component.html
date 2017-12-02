@@ -14,5 +14,5 @@
 
 <h2>Cursos Existentes</h2>
 <ul class="list-group">
-  <li *ngFor="let c of cursos" class="list-group-item" value="{{ c.id }}">{{ c.nome }}<button class="btn btn-primary">Editar</button><button type="button" (click)="delete(c.id)" class="btn btn-danger">Apagar</button></li>  
+  <li *ngFor="let c of cursos" class="list-group-item" value="{{ c.id }}">{{ c.nome }}<a class="btn btn-primary" href="#" role="button" [routerLink]="['/cursos/alterar', c.id]">Editar</a><button type="button" (click)="delete(c.id)" class="btn btn-danger">Apagar</button></li>  
 </ul>
