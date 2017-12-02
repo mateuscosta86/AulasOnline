@@ -28,8 +28,18 @@
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/cursos/alterar']">
+                    <a [routerLink]="['/cursos/alterar/']">
                         <span class='glyphicon glyphicon-cog'></span> Alterar Curso
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/professores/listar']">
+                        <span class='glyphicon glyphicon-th-list'></span> Listar Professores
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/professores/alterar']">
+                        <span class='glyphicon glyphicon-cog'></span> Editar Professores
                     </a>
                 </li>
             </ul>

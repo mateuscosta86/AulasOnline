@@ -12,27 +12,31 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 export class CursoAlterComponent implements OnInit, OnDestroy {
   
   cursos: any[];  
-  curso: any = {};
+  curso: any;
   id: number;
   saveCurso: SaveCurso = { id: 0, nome: "", preco: 0 };
   sub: any;
 
   constructor(private cursoService: CursoService, private route: ActivatedRoute) {
-    
+      
     // console.log("iniciado");
    }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => this.id = +params['id']);
-    console.log(this.id);
-    if(this.id != 0)
+    if(this.id) {
       this.cursoService.getCurso(this.id)
-        .subscribe(curso => {
-          this.curso = curso;
-          this.saveCurso.nome = this.curso.nome;
-          this.saveCurso.preco = this.curso.preco;
-        });
-
+      .subscribe(curso => {
+        this.curso = curso;
+        this.saveCurso.nome = this.curso.nome;
+        this.saveCurso.preco = this.curso.preco;
+      });
+    }      
+    else {
+      this.saveCurso.nome = "";
+      this.saveCurso.preco = 0;
+    }
+    
     this.cursoService.getCursos()
     .subscribe(cursos => this.cursos = cursos);
   }

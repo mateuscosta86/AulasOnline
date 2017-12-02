@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h2>Professores Existentes</h2>
+        <div class="list-group">
+          <button *ngFor="let p of professores" id="{{ p.id }}" type="button" class="list-group-item list-group-item-action" (click)="onClickForAlter($event)">{{ p.nome }} {{ p.sobreNome }}</button>
+        </div>
+      </div>
+      <div class="col-6">
+          <form (ngSubmit)="submit($event)">
+              <div class="form-group">
+                <label for="nome">Nome do professor</label>
+                <input type="text" class="form-control" id="nome" placeholder="Insira o nome do professor" (change)="onMakeChange()"  [(ngModel)]="saveProfessor.nome" name="nome">
+              </div>
+              <div class="form-group">
+                <label for="sobrenome">SobreNome</label>
+                <input type="text" class="form-control" id="sobrenome" placeholder="Insira o sobrenome do professor" (change)="onMakeChange()"  [(ngModel)]="saveProfessor.sobreNome" name="sobrenome">
+              </div>  
+              <button type="submit" class="btn btn-primary">Alterar</button>
+            </form>
+      </div>
+    </div>
+  </div>

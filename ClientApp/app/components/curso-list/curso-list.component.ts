@@ -10,8 +10,7 @@ export class CursoListComponent implements OnInit {
   cursos: any[];  
   curso: any = {};
   constructor(private cursoService: CursoService) {
-    
-    // console.log("iniciado");
+        
    }
 
   ngOnInit() {
