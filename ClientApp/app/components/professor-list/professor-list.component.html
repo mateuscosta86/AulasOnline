@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="col-6">
-        <div>
+        <div *ngIf="professor.id != 0">
           <h3>Detalhes do professor</h3>
           <p>Id: {{professor.id}}</p>
           <p>Nome: {{professor.nome}}</p>

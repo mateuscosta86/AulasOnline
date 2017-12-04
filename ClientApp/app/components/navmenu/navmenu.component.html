@@ -77,6 +77,21 @@
                         <span class='glyphicon glyphicon-cog'></span> Editar Disciplinas
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/aulas/listar']">
+                        <span class='glyphicon glyphicon-th-list'></span> Aulas
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/aulas/novo']">
+                        <span class='glyphicon glyphicon-plus'></span> Nova Aula
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/aulas/alterar']">
+                        <span class='glyphicon glyphicon-cog'></span> Editar Aulas
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

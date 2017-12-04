@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2>Aulas Existentes</h2>
+      <div class="list-group">
+        <button *ngFor="let a of aulas" id="{{ a.id }}" type="button" class="list-group-item list-group-item-action" (click)="onClickForDetails($event)">{{ a.titulo }}</button>
+      </div>
+    </div>
+    <div class="col-6">
+      <div *ngIf="aula.id != 0">
+        <h3>Detalhes da Aula</h3>
+        <p>Id: {{aula.id}}</p>
+        <p>Nome: {{aula.titulo}}</p>
+        <p>Duração da Aula: {{aula.duracao}} minutos</p>
+        <p>Curso: {{aula.curso.nome}}</p>
+        <p>Disciplina: {{aula.disciplina.nome}}</p>
+        <p>Matéria: {{aula.materia.nome}}</p>
+        <p>Professor: {{aula.professor.nome}} {{aula.professor.sobrenome}}</p>
+      </div>
+    </div>
+  </div>
+</div>

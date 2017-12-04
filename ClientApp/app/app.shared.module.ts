@@ -26,6 +26,10 @@ import { ProfessorService } from './services/professor.service';
 import { CursoService } from './services/curso.service';
 import { DisciplinaAlterComponent } from './components/disciplina-alter/disciplina-alter.component';
 import { DisciplinaListComponent } from './components/disciplina-list/disciplina-list.component';
+import { AulaFormComponent } from './components/aula-form/aula-form.component';
+import { AulaListComponent } from './components/aula-list/aula-list.component';
+import { AulaAlterComponent } from './components/aula-alter/aula-alter.component';
+import { AulaService } from './services/aula.service';
 
 
 @NgModule({
@@ -46,7 +50,10 @@ import { DisciplinaListComponent } from './components/disciplina-list/disciplina
         MateriaAlterComponent,
         DisciplinaFormComponent,
         DisciplinaAlterComponent,
-        DisciplinaListComponent
+        DisciplinaListComponent,
+        AulaFormComponent,
+        AulaListComponent,
+        AulaAlterComponent
     ],
     imports: [
         CommonModule,
@@ -71,6 +78,10 @@ import { DisciplinaListComponent } from './components/disciplina-list/disciplina
             { path: 'disciplinas/listar', component: DisciplinaListComponent },
             { path: 'disciplinas/alterar', component: DisciplinaAlterComponent },
             { path: 'disciplinas/alterar/:id', component: DisciplinaAlterComponent },
+            { path: 'aulas/novo', component: AulaFormComponent },
+            { path: 'aulas/listar', component: AulaListComponent },
+            { path: 'aulas/alterar', component: AulaAlterComponent },
+            { path: 'aulas/alterar/:id', component: AulaAlterComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
@@ -80,7 +91,8 @@ import { DisciplinaListComponent } from './components/disciplina-list/disciplina
         CursoService,
         ProfessorService,
         MateriaService,
-        DisciplinaService
+        DisciplinaService,
+        AulaService
     ]
 })
 export class AppModuleShared {

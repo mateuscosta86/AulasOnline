@@ -9,7 +9,7 @@ import { DisciplinaService } from '../../services/disciplina.service';
 export class DisciplinaListComponent implements OnInit {
 
   disciplinas: any[];  
-  disciplina: any = {};
+  disciplina: any = { id: 0 };
   constructor(private disciplinaService: DisciplinaService) {
         
    }

@@ -28,6 +28,7 @@ export class CursoAlterComponent implements OnInit, OnDestroy {
       this.cursoService.getCurso(this.id)
       .subscribe(curso => {
         this.curso = curso;
+        console.log(this.curso);
         this.saveCurso.nome = this.curso.nome;
         this.saveCurso.preco = this.curso.preco;
       });

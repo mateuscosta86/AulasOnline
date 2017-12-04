@@ -8,7 +8,7 @@ import { CursoService } from '../../services/curso.service';
 })
 export class CursoListComponent implements OnInit {
   cursos: any[];  
-  curso: any = {};
+  curso: any = { id: 0 };
   constructor(private cursoService: CursoService) {
         
    }

@@ -9,7 +9,7 @@ import { ProfessorService } from '../../services/professor.service';
 export class ProfessorListComponent implements OnInit {
 
   professores: any[];  
-  professor: any = {};
+  professor: any = { id: 0 };
   constructor(private professorService: ProfessorService) {
     
     // console.log("iniciado");

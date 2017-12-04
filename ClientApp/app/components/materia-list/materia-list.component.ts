@@ -9,7 +9,7 @@ import { MateriaService } from '../../services/materia.service';
 export class MateriaListComponent implements OnInit {
 
   materias: any[];  
-  materia: any = {};
+  materia: any = { id: 0 };
   constructor(private materiaService: MateriaService) {
         
    }

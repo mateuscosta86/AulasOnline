@@ -1,0 +1,46 @@
+<h1>Cadastrar Aula</h1>
+<form (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="titulo">Título da aula</label>
+      <input type="text" class="form-control" id="titulo" placeholder="Insira o título da aula" (change)="onMakeChange()"  [(ngModel)]="saveAula.titulo" name="titulo">
+    </div>
+    <div class="form-group">
+      <label for="duracao">Duração da aula</label>
+      <input type="text" class="form-control" id="durcacao" placeholder="Insira a duracao da aula" (change)="onMakeChange()"  [(ngModel)]="saveAula.duracao" name="duracao">
+    </div>
+    <div class="form-group">
+      <label for="curso">Curso</label>
+      <select id="curso" class="form-control" (change)="onMakeChange()" [(ngModel)]="saveAula.cursoId"  name="curso">
+        <option value=""></option>
+        <option *ngFor="let c of cursos" value="{{c.id}}">{{ c.nome }}</option>
+      </select>
+    </div>  
+    <div class="form-group">
+      <label for="disciplina">Disciplina</label>
+      <select id="disciplina" class="form-control" (change)="onMakeChange()" [(ngModel)]="saveAula.disciplinaId"  name="disciplina">
+        <option value=""></option>
+        <option *ngFor="let d of disciplinas" value="{{d.id}}">{{ d.nome }}</option>
+      </select>
+    </div>  
+    <div class="form-group">
+      <label for="materia">Matéria</label>
+      <select id="materia" class="form-control" (change)="onMakeChange()" [(ngModel)]="saveAula.materiaId"  name="materia">
+        <option value=""></option>
+        <option *ngFor="let m of materias" value="{{m.id}}">{{ m.nome }}</option>
+      </select>
+    </div>  
+    <div class="form-group">
+      <label for="professor">Professor</label>
+      <select id="professor" class="form-control" (change)="onMakeChange()" [(ngModel)]="saveAula.professorId"  name="professor">
+        <option value=""></option>
+        <option *ngFor="let p of professores" value="{{p.id}}">{{ p.nome }} {{ p.sobrenome }}</option>
+      </select>
+    </div>  
+    <button type="submit" class="btn btn-primary">Criar</button>
+  </form>
+
+
+<h2>Cursos Existentes</h2>
+<ul class="list-group">
+  <li *ngFor="let a of aulas" class="list-group-item" value="{{ a.id }}">{{ a.titulo }}<a class="btn btn-primary" href="#" role="button" [routerLink]="['/aulas/alterar', a.id]">Editar</a><button type="button" (click)="delete(a.id)" class="btn btn-danger">Apagar</button></li>  
+</ul>
